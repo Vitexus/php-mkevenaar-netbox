@@ -1,0 +1,3 @@
+src usr/lib/php-mkevenaar-netbox
+debian/cz.vitexsoftware.php-mkevenaar-netbox.metainfo.xml usr/share/metainfo
+debian/cz.vitexsoftware.php-mkevenaar-netbox.svg usr/share/icons/hicolor/scalable/apps

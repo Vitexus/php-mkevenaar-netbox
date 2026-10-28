@@ -1,0 +1,25 @@
+Source: php-mkevenaar-netbox
+Section: php
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ appstream,
+ jq,
+Standards-Version: 4.7.0
+Homepage: https://github.com/Vitexus/php-mkevenaar-netbox
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/Vitexus/php-mkevenaar-netbox.git
+Vcs-Browser: https://github.com/Vitexus/php-mkevenaar-netbox
+
+Package: php-mkevenaar-netbox
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ composer,
+ php-guzzlehttp-guzzle,
+Description: PHP client library for the NetBox REST API
+ PHP client for NetBox IPAM / DCIM (mkevenaar/netbox). Provides a Guzzle-based
+ HTTP client and resource classes covering IPAM, DCIM, circuits, virtualization,
+ tenancy, extras and related NetBox API endpoints.

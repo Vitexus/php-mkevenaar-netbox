@@ -1,7 +1,10 @@
 {
     "name": "mkevenaar/netbox",
     "description": "Netbox for PHP",
-    "keywords": ["netbox"],
+    "type": "library",
+    "keywords": [
+        "netbox"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1|^8.0|^7.4|^7.3|^7.2",

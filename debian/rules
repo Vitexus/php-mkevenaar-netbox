@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+
+PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
+PKG_SOURCE  := $(shell jq -r '.name' composer.json)
+PKG_TYPE    := $(shell jq -r '.type' composer.json)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+
+override_dh_auto_test:
+	appstreamcli validate --pedantic --no-net \
+	    debian/cz.vitexsoftware.php-mkevenaar-netbox.metainfo.xml
+
+override_dh_install:
+	dh_install
+	install -m 644 debian/autoload.php \
+	    debian/php-mkevenaar-netbox/usr/lib/php-mkevenaar-netbox/autoload.php
+	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" \
+	    debian/php-mkevenaar-netbox/usr/lib/php-mkevenaar-netbox/autoload.php
+	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" \
+	    debian/php-mkevenaar-netbox/usr/lib/php-mkevenaar-netbox/autoload.php
+	sed -i "s|'library'|'$(PKG_TYPE)'|g" \
+	    debian/php-mkevenaar-netbox/usr/lib/php-mkevenaar-netbox/autoload.php
+	# pkg-php-tools registration (composer vendor/project → autoload path)
+	install -m0755 -d debian/php-mkevenaar-netbox/usr/share/pkg-php-tools/autoloaders
+	echo 'mkevenaar netbox mkevenaar/NetBox/autoload.php' \
+	    > debian/php-mkevenaar-netbox/usr/share/pkg-php-tools/autoloaders/php-mkevenaar-netbox
+	# Convenience path under /usr/share/php matching the registration
+	install -D -m 0644 debian/php-mkevenaar-netbox/usr/lib/php-mkevenaar-netbox/autoload.php \
+	    debian/php-mkevenaar-netbox/usr/share/php/mkevenaar/NetBox/autoload.php

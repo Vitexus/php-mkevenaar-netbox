@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="generic">
+  <id>cz.vitexsoftware.php-mkevenaar-netbox</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>NetBox PHP</name>
+  <summary>PHP client library for the NetBox REST API</summary>
+  <description>
+    <p>
+      PHP client for NetBox IPAM and DCIM based on mkevenaar/netbox. Provides a
+      Guzzle-based HTTP client and resource classes covering IPAM, DCIM,
+      circuits, virtualization, tenancy, extras and related NetBox API
+      endpoints.
+    </p>
+  </description>
+  <url type="homepage">https://github.com/Vitexus/php-mkevenaar-netbox</url>
+  <url type="bugtracker">https://github.com/Vitexus/php-mkevenaar-netbox/issues</url>
+  <icon type="stock">cz.vitexsoftware.php-mkevenaar-netbox</icon>
+  <provides>
+    <library>mkevenaar/NetBox/autoload.php</library>
+  </provides>
+  <releases>
+    <release version="3.0.0" date="2026-10-28" />
+  </releases>
+  <developer id="cz.vitexsoftware">
+    <name>Vítězslav Dvořák</name>
+  </developer>
+  <content_rating type="oars-1.1" />
+</component>

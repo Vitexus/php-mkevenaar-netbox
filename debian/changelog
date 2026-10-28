@@ -1,0 +1,6 @@
+php-mkevenaar-netbox (3.0.0) UNRELEASED; urgency=medium
+
+  * Initial Debian packaging of mkevenaar/netbox 3.0.0
+  * Static debian/autoload.php with Guzzle dependency and InstalledVersions
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 28 Oct 2026 02:05:00 +0200

@@ -1,0 +1,23 @@
+#!/usr/bin/php
+<?php
+
+declare(strict_types=1);
+
+require '/usr/lib/php-mkevenaar-netbox/autoload.php';
+
+if (!\Composer\InstalledVersions::isInstalled('mkevenaar/netbox')) {
+    fwrite(STDERR, "mkevenaar/netbox not registered in InstalledVersions\n");
+    exit(1);
+}
+
+if (\Composer\InstalledVersions::getPrettyVersion('mkevenaar/netbox') === '0.0.0') {
+    fwrite(STDERR, "mkevenaar/netbox version was not baked in\n");
+    exit(1);
+}
+
+if (!class_exists(\mkevenaar\NetBox\Client::class)) {
+    fwrite(STDERR, "mkevenaar\\NetBox\\Client class not autoloadable\n");
+    exit(1);
+}
+
+echo \Composer\InstalledVersions::getPrettyVersion('mkevenaar/netbox') . "\n";
